@@ -38,6 +38,30 @@ Happy hacking!\n",
 	}
 
 	# XXX: write your code here...
+        cron { logrotate:
+                command => "/usr/sbin/logrotate",
+                user    => root,
+                hour    => 2,
+                minute  => 0
+        }
+
+        file { "/root/lesson1":
+                ensure => "directory",
+
+        }
+
+        file { "/root/lesson1/example_file":
+                ensure => "file",
+                content => "This is an example file",
+        }
+
+        host { "mytest.exampe.com":
+                ensure => "present",
+                ip => "127.0.0.1",
+                comment => "My comment",
+
+        }
+        
 
 }
 
